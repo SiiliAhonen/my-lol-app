@@ -1,0 +1,123 @@
+/* --- 全体に適用される基本スタイル --- */
+body {
+    /* モダンで読みやすいフォントを指定 */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f7f6; /* 目に優しい、明るい背景色 */
+    color: #333; /* 基本の文字色 */
+    text-align: center; /* 全ての要素を中央揃えに */
+}
+
+.container {
+    max-width: 800px; /* PCでも見やすいように最大幅を設定 */
+    margin: 0 auto;
+    background-color: #ffffff; /* コンテンツエリアの背景は白 */
+    border-radius: 10px; /* 角を丸くして柔らかい印象に */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* 薄い影で立体感を出す */
+    padding: 20px 40px;
+}
+
+h1 {
+    color: #005A82; /* ポップさを感じさせる、少し落ち着いた青 */
+    font-size: 2rem;
+}
+
+p {
+    line-height: 1.6; /* 行間を少し広げて読みやすく */
+}
+
+
+/* --- ボタンの共通スタイル --- */
+.start-button, .restart-button, .option {
+    display: block; /* ボタンをブロック要素にして、幅とマージンを調整 */
+    padding: 15px;
+    margin: 15px auto;
+    width: 90%;
+    max-width: 450px; /* ボタンが横に広がりすぎないように */
+    background-color: #00A8E8; /* 明るく、ポップな青 */
+    color: #ffffff;
+    text-decoration: none; /* aタグの下線を消す */
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px; /* 角を大きく丸めて、親しみやすい形に */
+    border: none; /* buttonタグのデフォルトの枠線を消す */
+    cursor: pointer;
+    transition: all 0.3s ease; /* アニメーションを滑らかに */
+}
+
+/* マウスを乗せた時の動き */
+.start-button:hover, .restart-button:hover, .option:hover {
+    background-color: #007EA7; /* 少し濃い青に */
+    transform: translateY(-3px); /* 少し上に浮き上がる */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* --- ページごとの個別スタイル --- */
+
+/* トップページ */
+.description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* 診断ページ */
+#progress {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #00A8E8;
+}
+
+#question {
+    font-size: 1.5rem;
+    margin: 20px 0 40px 0;
+}
+
+
+/* 結果ページ */
+.result-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.result-item .champion-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* 画像を円形に */
+    border: 4px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+.result-item .champion-name {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #005A82;
+}
+
+.result-item .champion-role {
+    margin: 5px 0 15px 0;
+    font-weight: bold;
+    color: #555;
+    background-color: #e7f7fe;
+    display: inline-block; /* 背景色に必要な分だけ幅を持たせる */
+    padding: 5px 15px;
+    border-radius: 20px;
+}
+
+.result-item .champion-strengths {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* 長所のテキストは左揃えに */
+    display: inline-block;
+}
+
+.result-item .champion-strengths li {
+    padding: 8px;
+}
