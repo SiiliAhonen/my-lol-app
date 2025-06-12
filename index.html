@@ -8,18 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>LoLチャンピオン診断</h1>
-        </header>
-        <main>
-            <p class="description">
-                いくつかの簡単な質問に答えるだけで、<br>
-                あなたにピッタリのチャンピオンが見つかる！
-            </p>
-            <div class="start-button-container">
-                <a href="quiz.html" class="start-button">診断をはじめる</a>
-            </div>
-        </main>
+        <h1>あなたにピッタリのLoLチャンピオン診断</h1>
+        <p class="description">
+            いくつかの質問に答えるだけで、<br>
+            あなたにおすすめのチャンピオンが見つかります！
+        </p>
+        
+        <a href="quiz.html" class="start-button" onclick="setQuizLevel('beginner')">
+            かんたん診断を始める<br><small>(LoL初心者の方はこちら)</small>
+        </a>
+        <a href="quiz.html" class="start-button" onclick="setQuizLevel('intermediate')">
+            こだわり診断を始める<br><small>(LoL経験者の方はこちら)</small>
+        </a>
+
     </div>
+
+    <script>
+        function setQuizLevel(level) {
+            sessionStorage.setItem('quizLevel', level);
+        }
+    </script>
 </body>
 </html>

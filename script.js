@@ -107,7 +107,7 @@ const champions = [
     "strengths": [
       "広範囲の強力なCCを持つULT",
       "2回使用可能なスタン付きブリンク",
-      "序盤のギャンク性能"
+      "序盤のガンク性能"
     ],
     "uniqueMechanics": "2回チャージ可能なQによる長距離移動とスタン、ULTによる広範囲の拘束",
     "region": "シュリーマ",
@@ -922,7 +922,7 @@ const champions = [
     "damageType": "物理 (AD)",
     "attackType": "メレー",
     "strengths": [
-      "序盤の強力なギャンク性能",
+      "序盤の強力なガンク性能",
       "旗と槍のコンボによる打ち上げ",
       "敵を閉じ込めるULT"
     ],
@@ -1720,7 +1720,7 @@ const champions = [
     "damageType": "魔法 (AP)",
     "attackType": "メレー",
     "strengths": [
-      "転がす雪玉による強力なギャンク性能",
+      "転がす雪玉による強力なガンク性能",
       "高いオブジェクトコントロール能力",
       "広範囲のULT"
     ],
@@ -1910,7 +1910,7 @@ const champions = [
     "damageType": "魔法 (AP)",
     "attackType": "メレー",
     "strengths": [
-      "非常に高い移動速度によるギャンク性能",
+      "非常に高い移動速度によるガンク性能",
       "ターゲット指定の挑発（タウント）",
       "物理攻撃に対する高いカウンター性能"
     ],
@@ -2934,7 +2934,7 @@ const champions = [
     "damageType": "物理 (AD)",
     "attackType": "メレー",
     "strengths": [
-      "高いギャンク性能",
+      "高いガンク性能",
       "ターゲット指定のブリンクとCC",
       "ULTによる対遠距離攻撃への耐性"
     ],
@@ -3154,137 +3154,130 @@ const champions = [
   }
 ];
 
-// --- 質問データ ---
-// 各選択肢に、どの特性にポイントが入るかを定義します。
-const quizData = [
+const beginnerQuizData = [
     {
         question: "質問1：どんな戦い方が好き？",
         options: [
-            { text: "敵の目の前まで行って、ガンガン殴り合いたい！", scores: { class: ["ファイター", "ジャガーノート", "ダイバー"] } },
-            { text: "味方を守るチームの「盾」になりたい！", scores: { class: ["タンク", "ワーデン"] } },
-            { text: "安全な場所から、魔法や矢で攻撃したい！", scores: { class: ["メイジ", "マークスマン"] } },
-            { text: "隠れてチャンスをうかがい、一瞬で仕留めたい！", scores: { class: ["アサシン"] } }
+            { text: "スキルを駆使して、華麗に殴り合いたい！", scores: { class: ["ファイター"], weight: 3 } },
+            { text: "味方を守るチームの「盾」として、最前線に立ちたい！", scores: { class: ["タンク"], weight: 3 } },
+            { text: "安全な場所から、魔法や矢で一方的に攻撃したい！", scores: { class: ["メイジ", "マークスマン"], weight: 3 } },
+            { text: "物陰に潜んで、一人になった敵を瞬殺したい！", scores: { class: ["アサシン"], weight: 3 } }
         ]
     },
     {
         question: "質問2：どんなキャラクターに惹かれる？",
         options: [
-            { text: "思わず見とれる、美しい or かわいいキャラクター", scores: { designTheme: ["優雅", "妖艶", "かわいい", "イケメン", "ヴァスタヤ"] } },
-            { text: "動きが洗練された、クールでカッコいいキャラクター", scores: { designTheme: ["スタイリッシュ", "ヒーロー", "忍者", "騎士", "決闘者", "侍"] } },
-            { text: "ちょっと怖い…でもそこが魅力的なキャラクター", scores: { designTheme: ["恐ろしい", "悪魔的", "ヴォイド", "ホラー", "アンデッド"] } },
-            { text: "人間じゃない、不思議な生き物やモンスター", scores: { designTheme: ["ドラゴン", "ゴーレム", "樹木", "ヨードル", "精霊"] } }
+            { text: "思わず見とれる、美しい or かわいいキャラクター", scores: { designTheme: ["優雅", "妖艶", "かわいい", "イケメン", "ヴァスタヤ"], weight: 1 } },
+            { text: "動きが洗練された、クールでカッコいいキャラクター", scores: { designTheme: ["スタイリッシュ", "ヒーロー", "忍者", "騎士", "決闘者", "侍"], weight: 1 } },
+            { text: "ちょっと怖い…でもそこが魅力的なキャラクター", scores: { designTheme: ["恐ろしい", "悪魔的", "ヴォイド", "ホラー", "アンデッド"], weight: 1 } },
+            { text: "人間じゃない、不思議な生き物やモンスター", scores: { designTheme: ["ドラゴン", "ゴーレム", "樹木", "ヨードル", "精霊"], weight: 1 } }
         ]
     },
     {
         question: "質問3：ゲームの操作、どのくらい練習できそう？",
         options: [
-            { text: "とにかく簡単！すぐに使えるのがいいな", scores: { difficulty: ["低"] } },
-            { text: "ちょっとくらいなら練習してみたい", scores: { difficulty: ["中"] } },
-            { text: "難しくてもOK！使いこなしてみたい", scores: { difficulty: ["高"] } }
+            { text: "とにかく簡単！すぐに使えるのがいいな", scores: { difficulty: ["低"], weight: 2 } },
+            { text: "ちょっとくらいなら練習してみたい", scores: { difficulty: ["中"], weight: 2 } },
+            { text: "難しくてもOK！使いこなしてみたい", scores: { difficulty: ["高"], weight: 2 } }
         ]
     },
     {
         question: "質問4：あなたが一番「気持ちいい！」と感じる瞬間は？",
         options: [
-            { text: "超強力な一撃で、相手の体力をゴッソリ奪った時", scores: { class: ["バースト", "アサシン"] } },
-            { text: "誰にも捕まらないスピードで、戦場を自由に駆け回った時", scores: { strengths: ["非常に高い機動力"] } },
-            { text: "相手の攻撃が届かない遠くから、一方的に攻撃できた時", scores: { strengths: ["長い射程", "非常に長い通常攻撃射程"] } },
-            { text: "どんなに攻撃されても倒れない、鉄壁の守りを見せた時", scores: { strengths: ["非常に高い耐久力", "高いタンク性能"] } }
+            { text: "超強力な一撃で、相手の体力をゴッソリ奪った時", scores: { strengths: ["バーストダメージ"], weight: 2 } },
+            { text: "誰にも捕まらないスピードで、戦場を自由に駆け回った時", scores: { strengths: ["非常に高い機動力"], weight: 2 } },
+            { text: "相手の攻撃が届かない遠くから、一方的に攻撃できた時", scores: { strengths: ["長い射程"], weight: 2 } },
+            { text: "どんなに攻撃されても倒れない、鉄壁の守りを見せた時", scores: { strengths: ["非常に高い耐久力"], weight: 2 } }
         ]
     },
     {
         question: "質問5：もしチームを組むなら、あなたの理想のポジションは？",
         options: [
-            { text: "みんなを率いて先陣を切る、頼れるリーダー", scores: { class: ["ヴァンガード"], designTheme: ["リーダー"] } },
-            { text: "一歩引いた場所から、仲間を優しくサポートする縁の下の力持ち", scores: { class: ["エンチャンター", "キャッチャー"] } },
-            { text: "自分の力を信じ、たった一人で道を切り開く孤高の存在", scores: { class: ["スカーミッシャー", "アサシン"] } }
-        ]
-    },
-    {
-        question: "質問6：戦うなら、どんなリスクを取る？",
-        options: [
-            { text: "負ける可能性はあっても、勝てば最高の結果になる一発逆転を狙いたい", scores: { class: ["アサシン", "スカーミッシャー"] } },
-            { text: "大きな見返りはなくても、着実に、安全に勝ちたい", scores: { class: ["タンク", "エンチャンター"] } },
-            { text: "状況を見ながら、攻めと守りを柔軟に切り替えたい", scores: { class: ["ファイター", "メイジ"] } }
-        ]
-    },
-    {
-        question: "質問7：戦闘が長引くのは好き？",
-        options: [
-            { text: "好きじゃない。一瞬でケリをつけたい", scores: { strengths: ["バーストダメージ", "奇襲によるキル性能"] } },
-            { text: "どんとこい！しぶとく戦い続けるのが得意だ", scores: { strengths: ["高い継戦能力", "高いサステイン（自己回復）"] } },
-            { text: "相手を翻弄しながら、ヒットアンドアウェイで戦いたい", scores: { strengths: ["高いカイト能力", "高い機動力"] } }
-        ]
-    },
-    {
-        question: "質問8：もし魔法が使えるなら、どんな魔法がいい？",
-        options: [
-            { text: "敵の動きをガッチリと固める魔法", scores: { strengths: ["強力なCCコンボ", "広範囲の強力なCCを持つULT", "ターゲット指定のスタン"] } },
-            { text: "味方を回復したり、盾で守ったりする魔法", scores: { strengths: ["味方を守る非常に高い防御性能", "味方の回復と強化"] } },
-            { text: "ワープしたり、壁を作ったりするトリッキーな魔法", scores: { uniqueMechanics: ["地形を変化させる", "ブリンク"] } },
-            { text: "とにかくド派手で、威力の高い攻撃魔法", scores: { strengths: ["高いバーストダメージ", "ULTによる非常に高い範囲ダメージ"] } }
-        ]
-    },
-    {
-        question: "質問9：どんな物語の主人公になりたい？",
-        options: [
-            { text: "闇の力を手にした、復讐心に燃えるダークヒーロー", scores: { designTheme: ["復讐", "悲劇的", "堕落した英雄"] } },
-            { text: "仲間や国のために戦う、正義感あふれる騎士", scores: { designTheme: ["正義", "騎士", "守護者", "デマーシア"] } },
-            { text: "誰にも縛られず、世界を自由に旅する放浪者", scores: { designTheme: ["放浪者", "冒険", "反逆者"] } },
-            { text: "すべてを圧倒的な力で支配する、孤高の皇帝", scores: { designTheme: ["皇帝", "支配者", "征服者", "女帝"] } }
+            { text: "みんなを率いて先陣を切り、戦いの口火を切りたい！", scores: { class: ["ヴァンガード"], weight: 2 } },
+            { text: "一歩引いた場所から、味方を回復したり守ったりしたい。", scores: { class: ["エンチャンター"], weight: 2 } },
+            { text: "敵を捕まえて、味方にキルチャンスを作ってあげたい。", scores: { class: ["キャッチャー"], weight: 2 } },
+            { text: "自分の力を信じ、たった一人で道を切り開きたい。", scores: { class: ["スカーミッシャー"], weight: 2 } }
         ]
     }
 ];
 
-
-// --- メインロジック ---
+const intermediateQuizData = [
+    {
+        question: "質問1：集団戦であなたの理想の動きは？",
+        options: [
+            { text: "敵のキャリーに一直線！何が何でも潰しに行く。", scores: { class: ["ダイバー"], weight: 3 } },
+            { text: "味方のキャリーを守る（ピールする）ことに全力を注ぐ。", scores: { strengths: ["ピール性能"], weight: 3 } },
+            { text: "敵集団に突っ込んで戦いの口火を切り（エンゲージ）、フォーカスを集める。", scores: { class: ["ヴァンガード"], weight: 3 } },
+            { text: "安全な後衛から、ひたすらダメージを出し続ける。", scores: { strengths: ["後衛からのダメージ出力"], weight: 3 } }
+        ]
+    },
+    {
+        question: "質問2：レーン戦では、どんな立ち回りを好む？",
+        options: [
+            { text: "序盤から積極的に仕掛けてキルを狙う、アグレッシブなスタイル。", scores: { strengths: ["序盤の強さ"], weight: 2 } },
+            { text: "CSを優先してパワースパイクを待ち、レイトゲームでキャリーする。", scores: { strengths: ["レイトゲーム性能"], weight: 2 } },
+            { text: "相手をタワー下に押し付け、ミニオン差でプレッシャーを与える。", scores: { strengths: ["高いウェーブクリア能力"], weight: 2 } },
+            { text: "味方ジャングラーのギャンクに合わせて、CCでキルを狙う。", scores: { strengths: ["ギャンク合わせ"], weight: 2 } }
+        ]
+    },
+    {
+        question: "質問3：ゲーム中盤、有利な状況。次に取るべきマクロ戦略は？",
+        options: [
+            { text: "5人で集まって、ドラゴンやバロンなどのオブジェクトを確実に確保する。", scores: { class: ["タンク", "コントロールメイジ"], weight: 2 } },
+            { text: "自分だけサイドレーンに行き、スプリットプッシュでタワーを破壊する。", scores: { strengths: ["スプリットプッシュ性能"], weight: 2 } },
+            { text: "敵のジャングルに侵入し、視界を奪って孤立した敵をキルする（ピックアップ）。", scores: { class: ["アサシン", "キャッチャー"], weight: 2 } }
+        ]
+    },
+    {
+        question: "質問4：あなたが最も魅力を感じるスキルの種類は？",
+        options: [
+            { text: "当てるのは難しいが、当たれば強力なスキルショット。", scores: { uniqueMechanics: ["スキルショット主体"], weight: 1 } },
+            { text: "クリックするだけで確実に当たる、ターゲット指定スキル。", scores: { uniqueMechanics: ["ターゲット指定スキル"], weight: 1 } },
+            { text: "通常攻撃を主体とし、それを強化するスキル。", scores: { strengths: ["通常攻撃主体"], weight: 1 } },
+            { text: "スタックを溜めることで、無限に強くなるスキル。", scores: { strengths: ["無限にスケールする"], weight: 1 } }
+        ]
+    }
+];
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 診断ページのロジック ---
     if (document.getElementById('quiz-container')) {
+        const level = sessionStorage.getItem('quizLevel') || 'beginner';
+        const quizData = level === 'intermediate' ? intermediateQuizData : beginnerQuizData;
         let currentQuestionIndex = 0;
-        let userScores = {}; // ユーザーの回答スコアを記録するオブジェクト
+        let userScores = {};
 
         const progressElement = document.getElementById('progress');
         const questionElement = document.getElementById('question');
         const optionsContainer = document.getElementById('options-container');
 
-        // 質問を表示する関数
         function showQuestion() {
             const questionData = quizData[currentQuestionIndex];
-            
             progressElement.textContent = `Q${currentQuestionIndex + 1} / ${quizData.length}`;
             questionElement.textContent = questionData.question;
             optionsContainer.innerHTML = '';
-
             questionData.options.forEach(option => {
                 const button = document.createElement('button');
                 button.textContent = option.text;
                 button.className = 'option';
-                button.onclick = () => {
-                    selectOption(option);
-                };
+                button.onclick = () => { selectOption(option); };
                 optionsContainer.appendChild(button);
             });
         }
 
-        // 選択肢が選ばれた時の処理
         function selectOption(option) {
+            const weight = option.scores.weight || 1;
             for (const key in option.scores) {
+                if (key === 'weight') continue;
                 if (option.scores.hasOwnProperty(key)) {
                     const values = option.scores[key];
                     values.forEach(value => {
-                        if (!userScores[value]) {
-                            userScores[value] = 0;
-                        }
-                        userScores[value]++;
+                        if (!userScores[value]) { userScores[value] = 0; }
+                        userScores[value] += weight;
                     });
                 }
             }
-
             currentQuestionIndex++;
-
             if (currentQuestionIndex < quizData.length) {
                 showQuestion();
             } else {
@@ -3292,80 +3285,74 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = 'result.html';
             }
         }
-
-        // 最初の質問を表示する
         showQuestion();
     }
 
-    // --- 結果ページのロジック ---
     if (document.getElementById('result-container')) {
         const userScores = JSON.parse(sessionStorage.getItem('lolChampionScores'));
-
         if (!userScores) {
-            // もしスコアがなければ診断ページに戻す
             if (window.location.pathname.includes('result.html')) {
                  window.location.href = 'index.html';
             }
             return;
         }
 
-        const championMatchScores = champions.map(champion => {
+        let championMatchScores = champions.map(champion => {
             let score = 0;
-            const categories = ['class', 'designTheme', 'strengths', 'difficulty'];
-
+            const categories = ['class', 'designTheme', 'strengths', 'difficulty', 'uniqueMechanics'];
             categories.forEach(category => {
-                const championTraits = champion[category];
-                if (championTraits) {
-                    // プロパティが配列か文字列かを判断して処理を分ける
+                if (champion[category]) {
+                    const championTraits = champion[category];
                     if (Array.isArray(championTraits)) {
                         championTraits.forEach(trait => {
-                            if (userScores[trait]) {
-                                score += userScores[trait];
-                            }
+                            if (userScores[trait]) { score += userScores[trait]; }
                         });
-                    } else { // 文字列の場合 (difficulty)
-                        if (userScores[championTraits]) {
-                            score += userScores[championTraits];
-                        }
+                    } else {
+                        if (userScores[championTraits]) { score += userScores[championTraits]; }
                     }
                 }
             });
             return { ...champion, matchScore: score };
         });
 
-        // マッチスコアで降順にソート
         championMatchScores.sort((a, b) => b.matchScore - a.matchScore);
 
-        // 上位3体のチャンピオンを取得
-        const top3Champions = championMatchScores.slice(0, 3);
+        const top3Champions = [];
+        if (championMatchScores.length > 0) {
+            top3Champions.push(championMatchScores[0]);
+        }
+        if (championMatchScores.length > 1) {
+            const topChampionClasses = top3Champions[0].class || [];
+            let remainingChampions = championMatchScores.slice(1);
+            
+            remainingChampions.forEach(champ => {
+                const isSameClass = (champ.class || []).some(c => topChampionClasses.includes(c));
+                if (!isSameClass) {
+                    champ.matchScore += 1.5;
+                }
+            });
+
+            remainingChampions.sort((a, b) => b.matchScore - a.matchScore);
+
+            if (remainingChampions[0]) { top3Champions.push(remainingChampions[0]); }
+            if (remainingChampions[1]) { top3Champions.push(remainingChampions[1]); }
+        }
 
         const resultContainer = document.getElementById('result-container');
-        resultContainer.innerHTML = ''; // コンテナをクリア
-
+        resultContainer.innerHTML = '';
+        
         top3Champions.forEach(champion => {
             const resultItem = document.createElement('div');
             resultItem.className = 'result-item';
-            
-            // championNameENの'-'や特殊文字を整形する（例: Vel'Koz -> Velkoz, Bel'Veth -> BelVeth, K'Sante -> KSante, Nunu & Willump -> Nunu）
-            const formattedName = champion.championNameEN.replace(/['& ]/g, '').replace('Willump', '');
-
+            const formattedName = champion.championNameEN.replace(/['. &]/g, '').replace('Willump', '');
             const imageUrl = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${formattedName}_0.jpg`;
-            const strengthsHTML = champion.strengths.map(s => `<li>${s}</li>`).join('');
-
-            resultItem.innerHTML = `
-                <img src="${imageUrl}" alt="${champion.championNameJP}" class="champion-image" onerror="this.style.display='none'">
-                <h2 class="champion-name">${champion.championNameJP}</h2>
-                <p class="champion-role">役割：${champion.role.join(' / ')}</p>
-                <ul class="champion-strengths">
-                    ${strengthsHTML}
-                </ul>
-            `;
-            
+            const strengthsHTML = (champion.strengths && Array.isArray(champion.strengths)) ? champion.strengths.map(s => `<li>${s}</li>`).join('') : '';
+            const roleText = (champion.role && Array.isArray(champion.role)) ? `役割：${champion.role.join(' / ')}` : '';
+            resultItem.innerHTML = `<img src="${imageUrl}" alt="${champion.championNameJP}" class="champion-image" onerror="this.onerror=null;this.src='path/to/default-image.jpg';"><h2 class="champion-name">${champion.championNameJP}</h2><p class="champion-role">${roleText}</p><ul class="champion-strengths">${strengthsHTML}</ul>`;
             resultContainer.appendChild(resultItem);
         });
         
-        // 使用済みのスコアデータを削除
         sessionStorage.removeItem('lolChampionScores');
+        sessionStorage.removeItem('quizLevel');
     }
-
 });

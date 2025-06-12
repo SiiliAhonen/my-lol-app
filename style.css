@@ -73,7 +73,7 @@ p {
 /* 診断ページ */
 #progress {
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: bold
     color: var(--primary-color);
 }
 
@@ -94,13 +94,18 @@ p {
 }
 
 .result-item .champion-image {
-    width: 160px;  /* ▼変更：画像の幅を120pxから160pxに大きくしました */
-    height: 160px; /* ▼変更：画像の高さを120pxから160pxに大きくしました */
-    border-radius: 10px; /* ▼変更：円形(50%)から、角の丸い四角形に変更しました */
+    width: 308px;
+    height: 560px;
+    border-radius: 10px;
     border: 4px solid var(--white-color);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin-bottom: 15px;
-    object-fit: cover;
+    
+    /* ▼変更：coverからcontainに変更し、画像全体が表示されるようにします */
+    object-fit: contain; 
+    
+    /* ▼追加：画像の上下左右に余白ができた場合、その背景色を指定します */
+    background-color: #e9ecef; /* 背景を薄いグレーにして余白を目立たなくする */
 }
 
 .result-item .champion-name {
