@@ -1,6 +1,5 @@
 /* --- 全体に適用される基本スタイル --- */
 
-/* :rootで色などの変数を定義すると、後からの変更が楽になります */
 :root {
     --primary-color: #00A8E8;
     --primary-color-dark: #007EA7;
@@ -43,7 +42,7 @@ p {
     padding: 15px;
     margin: 15px auto;
     width: 90%;
-    max-width: 450px;
+    max-width: 600px; /* ▼変更：ボタンの最大幅を450pxから600pxに広げました */
     background-color: var(--primary-color);
     color: var(--white-color);
     text-decoration: none;
@@ -55,7 +54,6 @@ p {
     transition: all 0.3s ease;
 }
 
-/* マウスを乗せた時の動き */
 .start-button:hover, .restart-button:hover, .option:hover {
     background-color: var(--primary-color-dark);
     transform: translateY(-3px);
@@ -82,7 +80,6 @@ p {
 #question {
     font-size: 1.5rem;
     margin: 20px 0 40px 0;
-    /* ▼改善：長いテキストがはみ出ないように改行を許可 */
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -97,13 +94,12 @@ p {
 }
 
 .result-item .champion-image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+    width: 160px;  /* ▼変更：画像の幅を120pxから160pxに大きくしました */
+    height: 160px; /* ▼変更：画像の高さを120pxから160pxに大きくしました */
+    border-radius: 10px; /* ▼変更：円形(50%)から、角の丸い四角形に変更しました */
     border: 4px solid var(--white-color);
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     margin-bottom: 15px;
-    /* ▼改善：画像の縦横比を維持し、表示崩れを防ぐ */
     object-fit: cover;
 }
 
@@ -132,18 +128,18 @@ p {
 }
 
 .result-item .champion-strengths li {
-    padding: 8px 8px 8px 0; /* 左の余白をなくしてテキストの開始位置を揃える */
+    padding: 8px 8px 8px 0;
 }
 
 
-/* --- ▼追加：レスポンシブ対応 (画面幅が768px以下のデバイス用) --- */
+/* --- レスポンシブ対応 (画面幅が768px以下のデバイス用) --- */
 @media (max-width: 768px) {
     body {
-        padding: 10px; /* bodyの余白を少し減らす */
+        padding: 10px;
     }
 
     .container {
-        padding: 20px; /* 左右のパディングを減らす */
+        padding: 20px;
     }
 
     h1 {
@@ -156,6 +152,11 @@ p {
 
     #question {
         font-size: 1.3rem;
+    }
+
+    .result-item .champion-image {
+        width: 140px; /* スマホでは少しだけ画像サイズを調整 */
+        height: 140px;
     }
 
     .result-item .champion-name {
